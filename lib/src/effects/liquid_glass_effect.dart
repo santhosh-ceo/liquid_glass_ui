@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:liquid_glass_ui/liquid_glass_ui.dart';
+import 'package:liquid_glass_ui_design/liquid_glass_ui.dart' show LiquidTheme, LiquidThemeProvider;
 
 class LiquidGlassEffect extends StatefulWidget {
   final Widget? child;
