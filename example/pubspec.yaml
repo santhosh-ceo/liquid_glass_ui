@@ -11,8 +11,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
 
-  liquid_glass_ui:
-    path: ../../liquid_glass_ui
+  liquid_glass_ui_design:
+    path: ../
 
 dev_dependencies:
   flutter_test:

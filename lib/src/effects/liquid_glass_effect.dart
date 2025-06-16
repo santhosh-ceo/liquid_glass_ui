@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:liquid_glass_ui_design/liquid_glass_ui.dart' show LiquidTheme, LiquidThemeProvider;
+import 'package:liquid_glass_ui_design/liquid_glass_ui.dart';
 
 class LiquidGlassEffect extends StatefulWidget {
   final Widget? child;
@@ -31,7 +31,9 @@ class LiquidGlassEffect extends StatefulWidget {
     this.padding,
     this.margin,
     this.animate = true,
-    this.animationDuration = const Duration(milliseconds: 3000), // Slower for fluid motion
+    this.animationDuration = const Duration(
+      milliseconds: 3000,
+    ), // Slower for fluid motion
     this.vibrancy = 0.85, // Higher vibrancy for shine
     this.boxShadow,
   });
@@ -40,7 +42,8 @@ class LiquidGlassEffect extends StatefulWidget {
   _LiquidGlassEffectState createState() => _LiquidGlassEffectState();
 }
 
-class _LiquidGlassEffectState extends State<LiquidGlassEffect> with SingleTickerProviderStateMixin {
+class _LiquidGlassEffectState extends State<LiquidGlassEffect>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -52,7 +55,10 @@ class _LiquidGlassEffectState extends State<LiquidGlassEffect> with SingleTicker
         duration: widget.animationDuration,
         vsync: this,
       )..repeat(reverse: true);
-      _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOutSine);
+      _animation = CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOutSine,
+      );
     }
   }
 
@@ -64,11 +70,22 @@ class _LiquidGlassEffectState extends State<LiquidGlassEffect> with SingleTicker
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.dependOnInheritedWidgetOfExactType<LiquidThemeProvider>()?.theme ?? const LiquidTheme();
-    final baseColor = widget.baseColor ?? Colors.white.withOpacity(widget.vibrancy);
-    final highlightColor = widget.highlightColor ?? Colors.orange.withOpacity(0.6); // Warm tone from screenshot
-    final reflectionColor = widget.reflectionColor ?? Colors.white.withOpacity(0.4); // Stronger reflection
-    final borderColor = widget.borderColor ?? Colors.white.withOpacity(0.3); // Slightly stronger border
+    final theme =
+        context
+            .dependOnInheritedWidgetOfExactType<LiquidThemeProvider>()
+            ?.theme ??
+        const LiquidTheme();
+    final baseColor =
+        widget.baseColor ?? Colors.white.withOpacity(widget.vibrancy);
+    final highlightColor =
+        widget.highlightColor ??
+        Colors.orange.withOpacity(0.6); // Warm tone from screenshot
+    final reflectionColor =
+        widget.reflectionColor ??
+        Colors.white.withOpacity(0.4); // Stronger reflection
+    final borderColor =
+        widget.borderColor ??
+        Colors.white.withOpacity(0.3); // Slightly stronger border
 
     return Container(
       margin: widget.margin ?? theme.defaultMargin,
@@ -83,43 +100,56 @@ class _LiquidGlassEffectState extends State<LiquidGlassEffect> with SingleTicker
                 sigmaY: widget.blurStrength,
                 tileMode: TileMode.mirror,
               ),
-              child: Container(
-                color: Colors.transparent,
-              ),
+              child: Container(color: Colors.transparent),
             ),
             // Dynamic gradient with reflection
             AnimatedBuilder(
-              animation: widget.animate ? _animation : const AlwaysStoppedAnimation(0.0),
+              animation:
+                  widget.animate
+                      ? _animation
+                      : const AlwaysStoppedAnimation(0.0),
               builder: (context, child) {
                 return Container(
                   decoration: BoxDecoration(
                     gradient: RadialGradient(
-                      center: Alignment(0.3 + _animation.value * 0.4, -0.3 - _animation.value * 0.4),
+                      center: Alignment(
+                        0.3 + _animation.value * 0.4,
+                        -0.3 - _animation.value * 0.4,
+                      ),
                       radius: 1.8, // Slightly larger radius for wider spread
                       colors: [
                         baseColor.withOpacity(0.8 + _animation.value * 0.1),
-                        highlightColor.withOpacity(0.7 - _animation.value * 0.2),
+                        highlightColor.withOpacity(
+                          0.7 - _animation.value * 0.2,
+                        ),
                         baseColor.withOpacity(0.6 + _animation.value * 0.1),
                       ],
                       stops: [0.0, 0.65 + _animation.value * 0.2, 1.0],
                     ),
                     borderRadius: BorderRadius.circular(widget.borderRadius),
-                    border: Border.all(color: borderColor, width: widget.borderWidth),
-                    boxShadow: widget.boxShadow ?? [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        blurRadius: 15,
-                        spreadRadius: 2,
-                        offset: const Offset(0, 8), // Deeper shadow for 3D
-                      ),
-                      // Enhanced specular reflection
-                      BoxShadow(
-                        color: reflectionColor.withOpacity(0.3 + _animation.value * 0.2),
-                        blurRadius: 6,
-                        spreadRadius: 0,
-                        offset: const Offset(-6, -6),
-                      ),
-                    ],
+                    border: Border.all(
+                      color: borderColor,
+                      width: widget.borderWidth,
+                    ),
+                    boxShadow:
+                        widget.boxShadow ??
+                        [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            blurRadius: 15,
+                            spreadRadius: 2,
+                            offset: const Offset(0, 8), // Deeper shadow for 3D
+                          ),
+                          // Enhanced specular reflection
+                          BoxShadow(
+                            color: reflectionColor.withOpacity(
+                              0.3 + _animation.value * 0.2,
+                            ),
+                            blurRadius: 6,
+                            spreadRadius: 0,
+                            offset: const Offset(-6, -6),
+                          ),
+                        ],
                   ),
                 );
               },

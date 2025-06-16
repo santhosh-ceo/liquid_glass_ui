@@ -1,4 +1,4 @@
-library;
+library liquid_glass_ui_design;
 
 export 'src/components/liquid_button.dart';
 export 'src/components/liquid_icon.dart';
