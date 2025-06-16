@@ -1,7 +1,7 @@
 name: liquid_glass_ui
 description: "A Flutter package for iOS 26-style liquid glass UI components."
 version: 1.0.0
-homepage:
+homepage: https://github.com/santhosh-ceo/liquid_glass_ui
 
 environment:
   sdk: ^3.7.2
