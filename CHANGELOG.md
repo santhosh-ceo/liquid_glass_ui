@@ -1,8 +1,6 @@
-## 1.0.0
+## 1.0.2
 
-- Initial release of `liquid_glass_ui`.
-- Features:
-  - 52 iOS 26-style liquid glass UI components.
-  - Frosted glass effect with blur, gradients, and smooth transitions.
-  - Flexible properties for customization (child, colors, callbacks).
-  - Comprehensive theming with `LiquidTheme`.
+- Fixed `LiquidGlassEffect` issues:
+  - Removed visible gap above components by setting default margin to zero.
+  - Ensured transparent, silver, shiny glass effect with minimal tint.
+  - Stabilized animation to eliminate white patches.

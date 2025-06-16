@@ -10,17 +10,17 @@ class LiquidTheme {
   final EdgeInsets defaultMargin;
 
   const LiquidTheme({
-    this.primaryColor = const Color(0x90FFFFFF), // Vibrant base
-    this.accentColor = const Color(0xFFFF9500), // Warm orange
-    this.blurStrength = 40.0, // Match reference blur
-    this.borderRadius = 24.0, // Smoother corners
+    this.primaryColor = const Color(0x00FFFFFF), // Fully transparent
+    this.accentColor = const Color(0xFF4CAF50), // Green
+    this.blurStrength = 25.0,
+    this.borderRadius = 20.0,
     this.textStyle = const TextStyle(
       fontFamily: 'SFPro',
-      color: Colors.white,
+      color: Colors.black87,
       fontWeight: FontWeight.w500,
     ),
     this.defaultPadding = const EdgeInsets.all(12.0),
-    this.defaultMargin = const EdgeInsets.all(4.0),
+    this.defaultMargin = const EdgeInsets.all(8.0),
   });
 
   ThemeData toThemeData() {
