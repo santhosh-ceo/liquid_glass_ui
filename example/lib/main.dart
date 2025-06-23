@@ -68,10 +68,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height - kToolbarHeight - kBottomNavigationBarHeight;
+    final screenHeight =
+        MediaQuery.of(context).size.height -
+        kToolbarHeight -
+        kBottomNavigationBarHeight;
     return Scaffold(
       body: Container(
-        color: Colors.blueGrey, // Plain white background
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+              'https://www.gstatic.com/flutter-onestack-prototype/genui/example_1.jpg',
+            ),
+            fit: BoxFit.cover,
+          ),
+        ),
+
         child: SafeArea(
           child: Column(
             children: [
@@ -80,7 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   index: _selectedIndex,
                   children: [
                     SizedBox(height: screenHeight, child: _buildBlogTab()),
-                    SizedBox(height: screenHeight, child: _buildCategoriesTab()),
+                    SizedBox(
+                      height: screenHeight,
+                      child: _buildCategoriesTab(),
+                    ),
                     SizedBox(height: screenHeight, child: _buildProfileTab()),
                   ],
                 ),
@@ -112,7 +126,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     LiquidText(
                       text: post['title'],
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                       semanticsLabel: 'Post Title ${post['title']}',
                     ),
                     const SizedBox(height: 8),
@@ -122,7 +139,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     const SizedBox(height: 8),
                     LiquidButton(
-                      child: const Text('Read More', style: TextStyle(color: Colors.black87)),
+                      child: const Text(
+                        'Read More',
+                        style: TextStyle(color: Colors.black87),
+                      ),
                       onTap: () => print('Read ${post['title']}'),
                       semanticsLabel: 'Read More ${post['title']}',
                     ),
@@ -180,10 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LiquidAvatar(
-            radius: 60.0,
-            semanticsLabel: 'Profile Avatar',
-          ),
+          LiquidAvatar(radius: 60.0, semanticsLabel: 'Profile Avatar'),
           const SizedBox(height: 16),
           LiquidText(
             text: 'Jane Doe',
@@ -197,7 +214,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           const SizedBox(height: 16),
           LiquidButton(
-            child: const Text('Edit Profile', style: TextStyle(color: Colors.black87)),
+            child: const Text(
+              'Edit Profile',
+              style: TextStyle(color: Colors.black87),
+            ),
             onTap: () => print('Edit profile tapped'),
             semanticsLabel: 'Edit Button',
           ),
@@ -228,23 +248,44 @@ class _MyHomePageState extends State<MyHomePage> {
           LiquidStepper(
             steps: [
               Step(
-                title: const Text('Step 1', style: TextStyle(color: Colors.black87)),
-                content: const Text('Account Setup', style: TextStyle(color: Colors.black87)),
+                title: const Text(
+                  'Step 1',
+                  style: TextStyle(color: Colors.black87),
+                ),
+                content: const Text(
+                  'Account Setup',
+                  style: TextStyle(color: Colors.black87),
+                ),
               ),
               Step(
-                title: const Text('Step 2', style: TextStyle(color: Colors.black87)),
-                content: const Text('Preferences', style: TextStyle(color: Colors.black87)),
+                title: const Text(
+                  'Step 2',
+                  style: TextStyle(color: Colors.black87),
+                ),
+                content: const Text(
+                  'Preferences',
+                  style: TextStyle(color: Colors.black87),
+                ),
               ),
             ],
             currentStep: _currentStep,
             onStepTapped: (index) => setState(() => _currentStep = index),
-            onStepContinue: () => setState(() => _currentStep = (_currentStep + 1).clamp(0, 1)),
-            onStepCancel: () => setState(() => _currentStep = (_currentStep - 1).clamp(0, 1)),
+            onStepContinue:
+                () => setState(
+                  () => _currentStep = (_currentStep + 1).clamp(0, 1),
+                ),
+            onStepCancel:
+                () => setState(
+                  () => _currentStep = (_currentStep - 1).clamp(0, 1),
+                ),
             semanticsLabel: 'Setup Stepper',
           ),
           const SizedBox(height: 16),
           LiquidButton(
-            child: const Text('Logout', style: TextStyle(color: Colors.black87)),
+            child: const Text(
+              'Logout',
+              style: TextStyle(color: Colors.black87),
+            ),
             onTap: () => print('Logged out'),
             semanticsLabel: 'Logout Button',
           ),

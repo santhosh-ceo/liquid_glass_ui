@@ -1,6 +1,5 @@
-## 1.0.2
+## 1.0.3
 
 - Fixed `LiquidGlassEffect` issues:
-  - Removed visible gap above components by setting default margin to zero.
-  - Ensured transparent, silver, shiny glass effect with minimal tint.
-  - Stabilized animation to eliminate white patches.
+  - Added a static blog list app example with bottom navigation and `LiquidCard` for posts.
+  - Enhanced `LiquidGlassEffect` to match GlassContainer aesthetic with improved shine.
