@@ -1,7 +1,7 @@
 name: example
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.1
+version: 1.0.0
 
 environment:
   sdk: ^3.7.2
@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  hive_flutter: ^1.1.0
+  flutter_riverpod: ^2.0.0
 
   liquid_glass_ui_design:
     path: ../

@@ -21,51 +21,63 @@ class LiquidGlassEffect extends StatelessWidget {
   const LiquidGlassEffect({
     super.key,
     this.child,
-    this.blurStrength = 10.0, // Matches GlassContainer default
+    this.blurStrength = 25.0,
     this.baseColor,
     this.highlightColor,
     this.reflectionColor,
     this.borderColor,
-    this.borderRadius = 12.0, // Matches GlassContainer default
-    this.borderWidth = 1.0, // Matches GlassContainer default
+    this.borderRadius = 20.0,
+    this.borderWidth = 0.8,
     this.padding,
     this.margin,
-    this.animate = true,
+    this.animate = false,
     this.animationDuration = const Duration(milliseconds: 3000),
-    this.vibrancy = 0.5, // Adjusted for transparency
+    this.vibrancy = 0.4,
     this.boxShadow,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.dependOnInheritedWidgetOfExactType<LiquidThemeProvider>()?.theme ?? const LiquidTheme();
-    final bgColor = baseColor ?? theme.primaryColor.withOpacity(0.2); // Lighter tint like GlassContainer
-    final bColor = borderColor ?? theme.primaryColor.withOpacity(0.3); // Subtle border like GlassContainer
+    final theme =
+        context
+            .dependOnInheritedWidgetOfExactType<LiquidThemeProvider>()
+            ?.theme ??
+        const LiquidTheme();
+
+    final baseColorValue = baseColor ?? Colors.white;
+    final bgAlpha = (255 * vibrancy).round().clamp(0, 255);
+    final glassColor = baseColorValue.withAlpha(bgAlpha);
 
     return Container(
       margin: margin ?? theme.defaultMargin,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blurStrength, sigmaY: blurStrength), // Matches GlassContainer blur
-          child: Container(
+          filter: ImageFilter.blur(sigmaX: blurStrength, sigmaY: blurStrength),
+          child: AnimatedContainer(
+            duration: animate ? animationDuration : Duration.zero,
             padding: padding ?? theme.defaultPadding,
             decoration: BoxDecoration(
-              color: bgColor.withOpacity(0.2), // Reduced opacity for transparency
               borderRadius: BorderRadius.circular(borderRadius),
-              border: Border.all(color: bColor, width: borderWidth),
-              boxShadow: boxShadow ?? [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.15), // Deeper shadow for depth
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-                BoxShadow(
-                  color: Colors.white.withOpacity(0.2), // Added reflection for shine
-                  blurRadius: 6,
-                  offset: const Offset(-2, -2),
-                ),
-              ],
+              color: glassColor.withOpacity(0.1), // Transparent white
+              border: Border.all(
+                color: borderColor ?? Colors.white.withOpacity(0.2),
+                width: borderWidth,
+              ),
+              boxShadow:
+                  boxShadow ??
+                  [
+                    BoxShadow(
+                      color: Colors.white.withOpacity(0.08),
+                      blurRadius: 12,
+                      offset: const Offset(-2, -2),
+                    ),
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 14,
+                      offset: const Offset(2, 2),
+                    ),
+                  ],
             ),
             child: child ?? const SizedBox.shrink(),
           ),

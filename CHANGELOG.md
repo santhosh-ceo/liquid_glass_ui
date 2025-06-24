@@ -1,5 +1,5 @@
 ## 1.0.3
 
 - Fixed `LiquidGlassEffect` issues:
-  - Added a static blog list app example with bottom navigation and `LiquidCard` for posts.
-  - Enhanced `LiquidGlassEffect` to match GlassContainer aesthetic with improved shine.
+  - Added a dynamic news app example with bottom navigation, Hive persistence, and Riverpod state management using `LiquidCard` for news items.
+  - Enhanced `LiquidGlassEffect` for an efficient, shiny glass look with corrected color handling.
