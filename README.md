@@ -17,6 +17,10 @@ A Flutter package providing 52 iOS 26-style liquid glass UI components with fros
 - **Pure Dart/Flutter**: No external dependencies, ensuring lightweight performance.
 
 This package is ideal for building modern, immersive apps with a premium look and feel.
+![1000104864](https://github.com/user-attachments/assets/5e95b1c0-e3cc-4e25-a391-093f23efdcf6)
+![1000104856](https://github.com/user-attachments/assets/c13367e9-d671-4a1c-ace5-574d0efc212a)
+
+
 
 ## Installation
 
@@ -24,7 +28,7 @@ To use `liquid_glass_ui` in your Flutter project, add it to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  liquid_glass_ui: ^1.0.0
+  liquid_glass_ui: ^1.0.3
 ```
 Then, run:
 ```bash
@@ -36,7 +40,7 @@ Wrap your app with LiquidThemeProvider to apply the liquid glass theme, then use
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:liquid_glass_ui/liquid_glass_ui.dart';
+import 'package:liquid_glass_ui_design/liquid_glass_ui.dart';
 
 void main() {
   runApp(const MyApp());
