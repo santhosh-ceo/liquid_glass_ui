@@ -2,7 +2,7 @@
 
 A Flutter package providing 52 iOS 26-style liquid glass UI components with frosted glass effects, smooth transitions, and flexible customization. Enhance your Flutter apps with a modern, elegant, and immersive user interface inspired by iOS 26’s aesthetic.
 
-[![Pub Version](https://img.shields.io/pub/v/liquid_glass_ui)](https://pub.dev/packages/liquid_glass_ui)
+[![Pub Version](https://img.shields.io/pub/v/liquid_glass_ui_design)](https://pub.dev/packages/liquid_glass_ui_design)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## About
