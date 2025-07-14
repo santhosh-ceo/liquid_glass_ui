@@ -1,5 +1,5 @@
-## 1.0.3
+## 1.0.5
 
 - Fixed `LiquidGlassEffect` issues:
-  - Added a dynamic news app example with bottom navigation, Hive persistence, and Riverpod state management using `LiquidCard` for news items.
+  - Added a media player UI as example
   - Enhanced `LiquidGlassEffect` for an efficient, shiny glass look with corrected color handling.
